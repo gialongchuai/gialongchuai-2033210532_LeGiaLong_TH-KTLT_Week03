@@ -183,6 +183,26 @@ void diemYenNgua(int a[][MAX], int m, int n) {
 	printf("\n");
 }
 
+// Hàm xuất dòng chỉ chứa số chẵn
+void dongChuaSoChan(int a[][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		int isEvenRow = 1;
+		for (int j = 0; j < n; j++) {
+			if (a[i][j] % 2 != 0) {
+				isEvenRow = 0;
+				break;
+			}
+		}
+		if (isEvenRow) {
+			printf("Dong chua so chan %d: ", i);
+			for (int j = 0; j < n; j++) {
+				printf("%5d", a[i][j]);
+			}
+			printf("\n");
+		}
+	}
+}
+
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -232,6 +252,9 @@ int main() {
 			break;
 		case 7:
 			diemYenNgua(a, m, n);
+			break;
+		case 8:
+			dongChuaSoChan(a, m, n);
 			break;
 		case 0:
 			printf("Thoat chuong trinh.\n");
