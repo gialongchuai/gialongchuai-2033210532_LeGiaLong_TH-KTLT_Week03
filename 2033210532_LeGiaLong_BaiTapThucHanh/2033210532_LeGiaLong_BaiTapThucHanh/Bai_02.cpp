@@ -39,6 +39,22 @@ void xuatCheoChinh(int a[MAX][MAX], int n) {
 	printf("\n");
 }
 
+void xuatCheoPhu(int a[MAX][MAX], int n) {
+	printf("Phan tu tren cac duong cheo song song voi duong cheo chinh:\n");
+	for (int k = 1; k < n; k++) {
+		for (int i = 0; i < n - k; i++) {
+			printf("%4d", a[i][i + k]);
+		}
+		printf("\n");
+	}
+	for (int k = 1; k < n; k++) {
+		for (int i = k; i < n; i++) {
+			printf("%4d", a[i][i - k]);
+		}
+		printf("\n");
+	}
+}
+
 int main() {
 	int a[MAX][MAX];
 	int n, choice;
@@ -69,6 +85,9 @@ int main() {
 			break;
 		case 2:
 			xuatCheoChinh(a, n);
+			break;
+		case 3:
+			xuatCheoPhu(a, n);
 			break;
 		case 0:
 			return 0;
