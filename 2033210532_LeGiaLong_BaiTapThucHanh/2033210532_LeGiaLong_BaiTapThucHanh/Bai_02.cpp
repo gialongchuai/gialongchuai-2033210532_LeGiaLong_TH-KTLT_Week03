@@ -31,7 +31,13 @@ void xuatMaTran(int a[MAX][MAX], int n) {
 		printf("\n");
 	}
 }
-
+void xuatCheoChinh(int a[MAX][MAX], int n) {
+	printf("Phan tu tren duong cheo chinh:\n");
+	for (int i = 0; i < n; i++) {
+		printf("%4d", a[i][i]);
+	}
+	printf("\n");
+}
 
 int main() {
 	int a[MAX][MAX];
@@ -61,7 +67,9 @@ int main() {
 			taoMaTran(a, n);
 			xuatMaTran(a, n);
 			break;
-		
+		case 2:
+			xuatCheoChinh(a, n);
+			break;
 		case 0:
 			return 0;
 		default:
