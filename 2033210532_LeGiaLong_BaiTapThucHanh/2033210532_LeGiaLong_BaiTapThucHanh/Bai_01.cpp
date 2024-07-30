@@ -154,6 +154,35 @@ void phanTuHoangHau(int a[][MAX], int dong, int cot) {
 	}
 	printf("\n");
 }
+// Hàm xuất các phần tử điểm yên ngựa
+int GTNN_DongI(int a[][MAX], int m, int n, int i) {
+	int min = a[i][0];
+	for (int j = 1; j < n; j++) {
+		if (a[i][j] < min) min = a[i][j];
+	}
+	return min;
+}
+
+int GTLN_CotJ(int a[][MAX], int m, int n, int j) {
+	int max = a[0][j];
+	for (int i = 1; i < m; i++) {
+		if (a[i][j] > max) max = a[i][j];
+	}
+	return max;
+}
+
+void diemYenNgua(int a[][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if ((a[i][j] == GTNN_DongI(a, m, n, i) && a[i][j] == GTLN_CotJ(a, m, n, j))
+				|| (a[i][j] == GTLN_CotJ(a, m, n, j) && a[i][j] == GTNN_DongI(a, m, n, i))) {
+				printf("%5d", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
+
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -200,6 +229,9 @@ int main() {
 			break;
 		case 6:
 			phanTuHoangHau(a, m, n);
+			break;
+		case 7:
+			diemYenNgua(a, m, n);
 			break;
 		case 0:
 			printf("Thoat chuong trinh.\n");
