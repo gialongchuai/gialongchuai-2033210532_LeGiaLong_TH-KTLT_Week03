@@ -55,6 +55,18 @@ void xuatCheoPhu(int a[MAX][MAX], int n) {
 	}
 }
 
+int timMaxTamGiacTren(int a[MAX][MAX], int n) {
+	int max = a[0][0];
+	for (int i = 0; i < n; i++) {
+		for (int j = i; j < n; j++) {
+			if (a[i][j] > max) {
+				max = a[i][j];
+			}
+		}
+	}
+	return max;
+}
+
 int main() {
 	int a[MAX][MAX];
 	int n, choice;
@@ -88,6 +100,9 @@ int main() {
 			break;
 		case 3:
 			xuatCheoPhu(a, n);
+			break;
+		case 4:
+			printf("Phan tu lon nhat trong tam giac tren: %d\n", timMaxTamGiacTren(a, n));
 			break;
 		case 0:
 			return 0;
