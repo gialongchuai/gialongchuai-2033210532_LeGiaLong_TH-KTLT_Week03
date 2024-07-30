@@ -115,6 +115,45 @@ void phanTuCucDai(int a[][MAX], int m, int n) {
 	}
 	printf("\n");
 }
+
+// Hàm xuất các phần tử hoàng hậu
+int xetDuongCheo(int a[][MAX], int dong, int cot, int i, int j) {
+	int k, h; // k: dòng, h: cột
+	for (k = i, h = j; k >= 0 && h < cot; k--, h++) {
+		if (a[k][h] > a[i][j]) return 0;
+	}
+	for (k = i + 1, h = j - 1; k < dong && h >= 0; k++, h--) {
+		if (a[k][h] > a[i][j]) return 0;
+	}
+	for (k = i - 1, h = j - 1; k >= 0 && h >= 0; k--, h--) {
+		if (a[k][h] > a[i][j]) return 0;
+	}
+	for (k = i + 1, h = j + 1; k < dong && h < cot; k++, h++) {
+		if (a[k][h] > a[i][j]) return 0;
+	}
+	return 1;
+}
+
+int xetCotDong(int a[][MAX], int dong, int cot, int i, int j) {
+	for (int k = 0; k < dong; k++) {
+		if (a[k][j] > a[i][j]) return 0;
+	}
+	for (int k = 0; k < cot; k++) {
+		if (a[i][k] > a[i][j]) return 0;
+	}
+	return 1;
+}
+
+void phanTuHoangHau(int a[][MAX], int dong, int cot) {
+	for (int i = 0; i < dong; i++) {
+		for (int j = 0; j < cot; j++) {
+			if (xetCotDong(a, dong, cot, i, j) == 1 && xetDuongCheo(a, dong, cot, i, j) == 1) {
+				printf("%5d", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -158,6 +197,9 @@ int main() {
 			break;
 		case 5:
 			phanTuCucDai(a, m, n);
+			break;
+		case 6:
+			phanTuHoangHau(a, m, n);
 			break;
 		case 0:
 			printf("Thoat chuong trinh.\n");
