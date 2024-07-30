@@ -1,0 +1,73 @@
+﻿/*
+	Bài 2. Cho ma trận vuông a cấp n, chứa số nguyên. Viết các hàm sau:
+	1. Tạo/xuất ma trận vuông a chứa số nguyên ngẫu nhiên có cấp n>=5.
+	2. Xuất các phần tử trên đường chéo chính.
+	3. Xuất các phần tử thuộc đường chéo song song với đường chéo chính.
+	4. Tìm phần tử max thuộc tam giác trên của đường chéo chính.
+	5. Sắp xếp ma trận tăng dần theo kiểu zic-zắc (tăng từ trái qua phải và từ trên xuống dưới) 
+	6. Sắp xếp đường chéo chính tăng dần từ trên xuống dưới.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX 100
+
+void taoMaTran(int a[MAX][MAX], int n) {
+	srand(time(NULL));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			a[i][j] = rand() % 100;
+		}
+	}
+}
+
+void xuatMaTran(int a[MAX][MAX], int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			printf("%4d", a[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
+int main() {
+	int a[MAX][MAX];
+	int n, choice;
+
+	printf("Nhap cap cua ma tran (n >= 5): ");
+	scanf("%d", &n);
+	if (n < 5) {
+		printf("Cap cua ma tran phai lon hon hoac bang 5.\n");
+		return 1;
+	}
+
+	while (1) {
+		printf("\nMenu:\n");
+		printf("1. Tao/xuat ma tran\n");
+		printf("2. Xuat cac phan tu tren duong cheo chinh\n");
+		printf("3. Xuat cac phan tu thuoc duong cheo song song voi duong cheo chinh\n");
+		printf("4. Tim phan tu max thuoc tam giac tren cua duong cheo chinh\n");
+		printf("5. Sap xep ma tran tang dan theo kieu zic-zac\n");
+		printf("6. Sap xep duong cheo chinh tang dan tu tren xuong duoi\n");
+		printf("0. Thoat\n");
+		printf("Nhap lua chon: ");
+		scanf("%d", &choice);
+
+		switch (choice) {
+		case 1:
+			taoMaTran(a, n);
+			xuatMaTran(a, n);
+			break;
+		
+		case 0:
+			return 0;
+		default:
+			printf("Lua chon khong hop le. Vui long chon lai.\n");
+		}
+	}
+
+	return 0;
+}
