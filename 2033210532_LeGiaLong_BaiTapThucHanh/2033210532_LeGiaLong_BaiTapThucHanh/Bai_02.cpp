@@ -102,6 +102,28 @@ void sapXepZicZac(int a[MAX][MAX], int n) {
 	}
 }
 
+void sapXepCheoChinh(int a[MAX][MAX], int n) {
+	int temp[MAX];
+	for (int i = 0; i < n; i++) {
+		temp[i] = a[i][i];
+	}
+
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (temp[i] > temp[j]) {
+				int t = temp[i];
+				temp[i] = temp[j];
+				temp[j] = t;
+			}
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		a[i][i] = temp[i];
+	}
+}
+
+
 int main() {
 	int a[MAX][MAX];
 	int n, choice;
@@ -141,6 +163,10 @@ int main() {
 			break;
 		case 5:
 			sapXepZicZac(a, n);
+			xuatMaTran(a, n);
+			break;
+		case 6:
+			sapXepCheoChinh(a, n);
 			xuatMaTran(a, n);
 			break;
 		case 0:
