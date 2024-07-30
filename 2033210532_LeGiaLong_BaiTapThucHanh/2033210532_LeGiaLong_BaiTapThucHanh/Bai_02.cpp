@@ -67,6 +67,41 @@ int timMaxTamGiacTren(int a[MAX][MAX], int n) {
 	return max;
 }
 
+void sapXepZicZac(int a[MAX][MAX], int n) {
+	int temp[MAX * MAX];
+	int k = 0;
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			temp[k++] = a[i][j];
+		}
+	}
+
+	for (int i = 0; i < k - 1; i++) {
+		for (int j = i + 1; j < k; j++) {
+			if (temp[i] > temp[j]) {
+				int t = temp[i];
+				temp[i] = temp[j];
+				temp[j] = t;
+			}
+		}
+	}
+
+	k = 0;
+	for (int i = 0; i < n; i++) {
+		if (i % 2 == 0) {
+			for (int j = 0; j < n; j++) {
+				a[i][j] = temp[k++];
+			}
+		}
+		else {
+			for (int j = n - 1; j >= 0; j--) {
+				a[i][j] = temp[k++];
+			}
+		}
+	}
+}
+
 int main() {
 	int a[MAX][MAX];
 	int n, choice;
@@ -103,6 +138,10 @@ int main() {
 			break;
 		case 4:
 			printf("Phan tu lon nhat trong tam giac tren: %d\n", timMaxTamGiacTren(a, n));
+			break;
+		case 5:
+			sapXepZicZac(a, n);
+			xuatMaTran(a, n);
 			break;
 		case 0:
 			return 0;
