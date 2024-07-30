@@ -54,6 +54,16 @@ void tongGiaTriTungDong(int a[][MAX], int m, int n) {
 	}
 }
 
+// Hàm xuất phần tử lớn nhất trên từng cột
+void phanTuLonNhatTungCot(int a[][MAX], int m, int n) {
+	for (int j = 0; j < n; j++) {
+		int max = a[0][j];
+		for (int i = 1; i < m; i++) {
+			if (a[i][j] > max) max = a[i][j];
+		}
+		printf("Max cot %d: %d\n", j, max);
+	}
+}
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -89,7 +99,9 @@ int main() {
 		case 2:
 			tongGiaTriTungDong(a, m, n);
 			break;
-
+		case 3:
+			phanTuLonNhatTungCot(a, m, n);
+			break;
 		case 0:
 			printf("Thoat chuong trinh.\n");
 			break;
