@@ -91,7 +91,30 @@ void phanTuDuongBien(int a[][MAX], int m, int n) {
 	}
 	printf("\n");
 }
-
+// Hàm xuất các phần tử cực đại
+void phanTuCucDai(int a[][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			int isMax = 1;
+			for (int k = 0; k < m; k++) {
+				if (a[k][j] > a[i][j]) {
+					isMax = 0;
+					break;
+				}
+			}
+			for (int k = 0; k < n; k++) {
+				if (a[i][k] > a[i][j]) {
+					isMax = 0;
+					break;
+				}
+			}
+			if (isMax) {
+				printf("%5d", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -133,7 +156,9 @@ int main() {
 		case 4:
 			phanTuDuongBien(a, m, n);
 			break;
-
+		case 5:
+			phanTuCucDai(a, m, n);
+			break;
 		case 0:
 			printf("Thoat chuong trinh.\n");
 			break;
