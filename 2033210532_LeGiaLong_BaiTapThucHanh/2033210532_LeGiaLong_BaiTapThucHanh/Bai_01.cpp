@@ -64,6 +64,34 @@ void phanTuLonNhatTungCot(int a[][MAX], int m, int n) {
 		printf("Max cot %d: %d\n", j, max);
 	}
 }
+// Hàm xuất các phần tử thuộc các đường biên
+void phanTuDuongBien(int a[][MAX], int m, int n) {
+	// Xuất đường biên trên
+	printf("Duong bien tren: ");
+	for (int j = 0; j < n; j++) {
+		printf("%5d", a[0][j]);
+	}
+
+	// Xuất đường biên dưới
+	printf("\nDuong bien duoi: ");
+	for (int j = 0; j < n; j++) {
+		printf("%5d", a[m - 1][j]);
+	}
+
+	// Xuất đường biên trái
+	printf("\nDuong bien trai: ");
+	for (int i = 1; i < m - 1; i++) {
+		printf("%5d", a[i][0]);
+	}
+
+	// Xuất đường biên phải
+	printf("\nDuong bien phai: ");
+	for (int i = 1; i < m - 1; i++) {
+		printf("%5d", a[i][n - 1]);
+	}
+	printf("\n");
+}
+
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -102,6 +130,10 @@ int main() {
 		case 3:
 			phanTuLonNhatTungCot(a, m, n);
 			break;
+		case 4:
+			phanTuDuongBien(a, m, n);
+			break;
+
 		case 0:
 			printf("Thoat chuong trinh.\n");
 			break;
