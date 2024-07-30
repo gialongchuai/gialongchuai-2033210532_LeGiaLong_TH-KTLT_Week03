@@ -203,6 +203,21 @@ void dongChuaSoChan(int a[][MAX], int m, int n) {
 	}
 }
 
+// Hàm sắp xếp ma trận tăng theo từng dòng
+void sapXepTangTheoDong(int a[][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			for (int k = j + 1; k < n; k++) {
+				if (a[i][j] > a[i][k]) {
+					int temp = a[i][j];
+					a[i][j] = a[i][k];
+					a[i][k] = temp;
+				}
+			}
+		}
+	}
+}
+
 // Hàm chính
 int main() {
 	int a[MAX][MAX];
@@ -256,6 +271,12 @@ int main() {
 		case 8:
 			dongChuaSoChan(a, m, n);
 			break;
+		case 9:
+			sapXepTangTheoDong(a, m, n);
+			printf("Ma tran sau khi sap xep:\n");
+			xuatMaTran(a, m, n);
+			break;
+
 		case 0:
 			printf("Thoat chuong trinh.\n");
 			break;
