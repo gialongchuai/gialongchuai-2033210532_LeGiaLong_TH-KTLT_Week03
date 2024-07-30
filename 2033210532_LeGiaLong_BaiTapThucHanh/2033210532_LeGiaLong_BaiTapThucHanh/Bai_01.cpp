@@ -43,6 +43,16 @@ void xuatMaTran(int a[][MAX], int m, int n) {
 }
 
 
+// Hàm tính tổng giá trị từng dòng
+void tongGiaTriTungDong(int a[][MAX], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		int tong = 0;
+		for (int j = 0; j < n; j++) {
+			tong += a[i][j];
+		}
+		printf("Tong dong %d: %d\n", i, tong);
+	}
+}
 
 // Hàm chính
 int main() {
@@ -76,8 +86,9 @@ int main() {
 			printf("Ma tran vua tao:\n");
 			xuatMaTran(a, m, n);
 			break;
-
-		
+		case 2:
+			tongGiaTriTungDong(a, m, n);
+			break;
 
 		case 0:
 			printf("Thoat chuong trinh.\n");
